@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClockNote</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ClockNote</h1>
+      <p class="subtitle">Track your work hours offline</p>
+    </header>
+
+    <main>
+      <!-- Timer Section -->
+      <section class="timer-section">
+        <div class="timer-container">
+          <div class="timer-display">
+            <div class="timer-label">Current Session</div>
+            <div class="timer-time" id="timer-display">00:00:00</div>
+            <div class="timer-status" id="timer-status">Ready to start</div>
+          </div>
+          <button class="btn-timer" id="timer-btn">
+            <span class="timer-btn-icon">▶</span>
+            <span class="timer-btn-text">Start Timer</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Entry Form Section -->
+      <section class="form-section">
+        <h2 id="form-title">Add Time Entry</h2>
+        <form id="entry-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="entry-date">Date *</label>
+              <input type="date" id="entry-date" required>
+            </div>
+
+            <div class="form-group">
+              <label for="entry-description">Description *</label>
+              <textarea id="entry-description" placeholder="Describe in detail what you worked on during this time..." required rows="4"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="entry-start-time">Start Time</label>
+              <input type="time" id="entry-start-time">
+            </div>
+
+            <div class="form-group">
+              <label for="entry-end-time">End Time</label>
+              <input type="time" id="entry-end-time">
+            </div>
+
+            <div class="form-group">
+              <label for="entry-duration">Duration (hours)</label>
+              <input type="number" id="entry-duration" step="0.01" min="0" placeholder="Auto-calculated or manual">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submit-btn">Add Entry</button>
+            <button type="button" class="btn btn-secondary" id="cancel-btn" style="display: none;">Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Entries Table Section -->
+      <section class="table-section">
+        <div class="table-header">
+          <h2>Time Entries</h2>
+          <div class="table-stats">
+            <span id="total-entries">0 entries</span>
+            <span id="total-hours">0.00 hours</span>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table id="entries-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Duration (hrs)</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="entries-tbody">
+              <tr class="empty-state">
+                <td colspan="6">No time entries yet. Add your first entry above!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Data saved to: <span id="data-file-path">Loading...</span></p>
+    </footer>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
